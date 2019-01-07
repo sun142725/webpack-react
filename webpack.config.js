@@ -4,9 +4,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 module.exports = {
     entry:{
-        index:'./src/index.js'
+        index: './src/page/index/index.js'
     },
     output:{
+        publicPath: '/',
         filename: './js/[name].js',
         path:path.resolve('./build')
     },
@@ -16,7 +17,7 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 query: { //babel的配置参数，可以写在.babelrc文件里也可以写在这里
-                    presets: ['es-2015','react']
+                    presets: ["es2015", "stage-0"]
                 }
             },
             {
@@ -55,7 +56,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             title: 'index',
-            template: 'index.html'
+            template: 'src/page/index/index.html'
         }),
         new CleanWebpackPlugin([
             'build'
